@@ -7,9 +7,9 @@ export const personalInfo = {
 I specialize in building responsive, high-performance websites and automating workflows to boost productivity. My approach combines clean code, intuitive design, and cutting-edge technology to deliver solutions that make a real impact.
 
 When I'm not coding, I'm exploring new technologies, contributing to open-source projects, and helping others learn to code.`,
-  email: "anurag@example.com",
-  github: "https://github.com/anuragwazarkar",
-  linkedin: "https://linkedin.com/in/anuragwazarkar",
+  email: "anuragwazarkar@gmail.com",
+  github: "https://github.com/Siyue216",
+  linkedin: "https://www.linkedin.com/in/anurag-wazarkar",
   resumeUrl: "/resume.pdf"
 };
 
