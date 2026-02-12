@@ -23,9 +23,9 @@ export default function About() {
         <div className="mx-auto">
           <div className="grid md:grid-cols-5 items-center">
             {/* Profile Image - Takes 2 columns, positioned on the right */}
-            <div className="md:col-span-2 flex justify-center  mb-12">
+            <div className="md:col-span-2 flex justify-center mb-16">
               <div className="relative">
-                <div className="w-64 h-64 md:w-72 lg:w-80 md:h-72 lg:h-80 rounded-2xl bg-gradient-to-br from-[var(--accent)] to-[var(--accent-hover)] p-1">
+                <div className="w-64 h-64 md:w-72 lg:w-80 md:h-72 lg:h-80 rounded-2xl bg-gradient-to-br from-[var(--accent)] to-[var(--accent-hover)] ">
                   <div className="w-full h-full rounded-2xl bg-[var(--card-bg)] overflow-hidden">
                     <img
                       src={personalInfo.pimage}
@@ -42,7 +42,7 @@ export default function About() {
             {/* Bio Content - Takes 3 columns */}
             <div className="md:col-span-3 space-y-6 mb-12">
               {bioParagraphs.map((paragraph, index) => (
-                <p key={index} className="text-lg text-justify text-[var(--foreground)] leading-relaxed">
+                <p key={index} className="text-lg  text-[var(--foreground)] leading-relaxed">
                   {paragraph}
                 </p>
               ))}
@@ -73,8 +73,8 @@ export default function About() {
                   "Passionate about AI automation",
                   "Open source contributor"
                 ].map((fact, index) => (
-                  <div key={index} className="flex items-center gap-3">
-                    <span className="text-[var(--accent)] text-xl ">✓</span>
+                  <div key={index} className="flex items-center gap-3 ml-3">
+                    <span className="text-[var(--accent)] text-xl">✓</span>
                     <span className="text-[var(--foreground)]">{fact}</span>
                   </div>
                 ))}

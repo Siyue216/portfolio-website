@@ -10,6 +10,7 @@ export default function Skills() {
     { name: 'Styling', items: skills.styling, icon: '🎨' },
     { name: 'Backend', items: skills.backend, icon: '⚙️' },
     { name: 'Database', items: skills.database, icon: '🗄️' },
+    { name: 'AI', items: skills.AI, icon: '🧠' },
     { name: 'Tools', items: skills.tools, icon: '🛠️' }
   ];
 

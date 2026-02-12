@@ -17,10 +17,10 @@ export default function Projects() {
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             Featured <span className="gradient-text">Projects</span>
           </h2>
-          <p className="text-lg text-[var(--muted)] max-w-2xl mx-auto">
+          <div className="w-20 h-1 bg-[var(--accent)] mx-auto mb-4 rounded-full"></div>
+          <p className="text-xl text-[var(--muted)] max-w-4xl mx-auto ">
             Check out some of my recent work and side projects
           </p>
-          <div className="w-20 h-1 bg-[var(--accent)] mx-auto mt-6 rounded-full"></div>
         </div>
 
         {/* Projects Grid */}
@@ -34,9 +34,9 @@ export default function Projects() {
 
               {/* Content */}
               <div className="flex-1 flex flex-col">
-                <h3 className="text-2xl font-bold mb-3">{project.title}</h3>
+                <h3 className="text-2xl font-bold mb-3 ml-3">{project.title}</h3>
                 
-                <p className="text-[var(--muted)] mb-6 flex-1 leading-relaxed">
+                <p className="text-[var(--muted)] mb-3 flex-1 leading-relaxed ml-3">
                   {project.description}
                 </p>
 
@@ -45,7 +45,7 @@ export default function Projects() {
                   {project.tags.map((tag, index) => (
                     <span
                       key={index}
-                      className="px-3 py-1 text-sm bg-[var(--background)] text-[var(--accent)] rounded-full border border-[var(--accent)]/30 font-medium"
+                      className="px-3 py-1 text-sm bg-[var(--background)] text-[var(--accent)] rounded-full border border-[var(--accent)]/30 font-medium ml-3"
                     >
                       {tag}
                     </span>
@@ -56,7 +56,7 @@ export default function Projects() {
                 <Button
                   onClick={() => setSelectedProject(project)}
                   variant="primary"
-                  className="w-full"
+                  className="w-full mb-2"
                 >
                   View Case Study
                 </Button>
