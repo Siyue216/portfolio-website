@@ -12,11 +12,11 @@ export default function Hero() {
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-b from-[var(--background)] to-[var(--card-bg)] py-20">
       {/* Centered Container */}
-      <div className="w-full">
+      <div className="mx-auto">
         <div className="container mx-auto px-6 md:px-8">
           <div className="max-w-4xl mx-auto text-center space-y-6 animate-fade-in-up">
             {/* Greeting */}
-            <p className="text-sm md:text-lg font-medium text-[var(--accent)] uppercase tracking-wide">
+            <p className="text-sm md:text-lg flex items-center justify-center font-medium text-[var(--accent)] uppercase tracking-wide">
               Welcome to my portfolio
             </p>
             
