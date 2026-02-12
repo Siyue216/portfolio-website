@@ -1,16 +1,6 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
-
-const navItems = [
-  { name: 'Home', href: '#home' },
-  { name: 'About', href: '#about' },
-  { name: 'Projects', href: '#projects' },
-  { name: 'Services', href: '#services' },
-  { name: 'Skills', href: '#skills' },
-  { name: 'Contact', href: '#contact' },
-];
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -18,12 +8,7 @@ export default function Navigation() {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    
-    // Check for saved theme preference or default to system preference
+    // Check system preference and localStorage
     const savedTheme = localStorage.getItem('theme');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     
@@ -31,7 +16,13 @@ export default function Navigation() {
       setIsDarkMode(true);
       document.documentElement.classList.add('dark');
     }
-    
+
+    // Handle scroll
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -46,77 +37,100 @@ export default function Navigation() {
     }
   };
 
+  const navLinks = [
+    { name: 'Home', href: '#home' },
+    { name: 'About', href: '#about' },
+    { name: 'Projects', href: '#projects' },
+    { name: 'Services', href: '#services' },
+    { name: 'Skills', href: '#skills' },
+    { name: 'Contact', href: '#contact' }
+  ];
+
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${isScrolled ? 'bg-[var(--background)] shadow-lg' : 'bg-transparent'}`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled
+          ? 'bg-[var(--background)]/95 backdrop-blur-md shadow-lg border-b border-[var(--border)]'
+          : 'bg-transparent'
+      }`}
+    >
+      <div className="container">
+        <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link href="#home" className="text-2xl font-bold gradient-text">
+          <a
+            href="#home"
+            className="text-2xl font-bold gradient-text hover:scale-105 transition-transform"
+          >
             AW
-          </Link>
+          </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
+          <div className="hidden md:flex items-center gap-8">
+            {navLinks.map((link) => (
               <a
-                key={item.name}
-                href={item.href}
-                className="text-[var(--foreground)] hover:text-[var(--accent)] transition-colors duration-200"
+                key={link.name}
+                href={link.href}
+                className="text-[var(--foreground)] hover:text-[var(--accent)] transition-colors font-medium"
               >
-                {item.name}
+                {link.name}
               </a>
             ))}
-            
+
             {/* Theme Toggle */}
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-lg bg-[var(--card-bg)] hover:bg-[var(--border)] transition-colors"
+              className="w-10 h-10 rounded-lg bg-[var(--card-bg)] border border-[var(--border)] hover:border-[var(--accent)] flex items-center justify-center transition-all hover:scale-110"
               aria-label="Toggle theme"
             >
-              {isDarkMode ? '☀️' : '🌙'}
+              {isDarkMode ? (
+                <span className="text-xl">☀️</span>
+              ) : (
+                <span className="text-xl">🌙</span>
+              )}
             </button>
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center space-x-4">
+          <div className="md:hidden flex items-center gap-4">
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-lg bg-[var(--card-bg)] hover:bg-[var(--border)] transition-colors"
+              className="w-10 h-10 rounded-lg bg-[var(--card-bg)] border border-[var(--border)] flex items-center justify-center"
               aria-label="Toggle theme"
             >
               {isDarkMode ? '☀️' : '🌙'}
             </button>
+
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="text-[var(--foreground)] focus:outline-none"
+              className="w-10 h-10 rounded-lg bg-[var(--card-bg)] border border-[var(--border)] flex flex-col items-center justify-center gap-1.5"
               aria-label="Toggle menu"
             >
-              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                {isMobileMenuOpen ? (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                ) : (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                )}
-              </svg>
+              <span className={`w-5 h-0.5 bg-[var(--foreground)] transition-all ${isMobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
+              <span className={`w-5 h-0.5 bg-[var(--foreground)] transition-all ${isMobileMenuOpen ? 'opacity-0' : ''}`}></span>
+              <span className={`w-5 h-0.5 bg-[var(--foreground)] transition-all ${isMobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
             </button>
           </div>
         </div>
+      </div>
 
-        {/* Mobile Menu */}
-        {isMobileMenuOpen && (
-          <div className="md:hidden py-4 animate-fade-in">
-            {navItems.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="block py-2 text-[var(--foreground)] hover:text-[var(--accent)] transition-colors"
-              >
-                {item.name}
-              </a>
-            ))}
-          </div>
-        )}
+      {/* Mobile Menu */}
+      <div
+        className={`md:hidden bg-[var(--background)] border-t border-[var(--border)] transition-all duration-300 overflow-hidden ${
+          isMobileMenuOpen ? 'max-h-96' : 'max-h-0'
+        }`}
+      >
+        <div className="container py-6 space-y-4">
+          {navLinks.map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="block text-lg font-medium text-[var(--foreground)] hover:text-[var(--accent)] transition-colors py-2"
+            >
+              {link.name}
+            </a>
+          ))}
+        </div>
       </div>
     </nav>
   );

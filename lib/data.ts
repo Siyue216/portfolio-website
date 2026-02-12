@@ -2,12 +2,13 @@ export const personalInfo = {
   name: "Anurag Wazarkar",
   role: "Web Developer & AI Automation Engineer",
   tagline: "I build fast, modern websites and AI-powered automations",
+  pimage: "/images/Secretary.jpg",
   bio: `Hi, I'm Anurag! I'm a passionate web developer and AI automation engineer dedicated to creating elegant digital solutions. With expertise in modern web technologies and AI integration, I help businesses transform their ideas into powerful, user-friendly applications.
 
 I specialize in building responsive, high-performance websites and automating workflows to boost productivity. My approach combines clean code, intuitive design, and cutting-edge technology to deliver solutions that make a real impact.
 
 When I'm not coding, I'm exploring new technologies, contributing to open-source projects, and helping others learn to code.`,
-  email: "anuragwazarkar@gmail.com",
+  email: "anuragwazarkar123@gmaill.com",
   github: "https://github.com/Siyue216",
   linkedin: "https://www.linkedin.com/in/anurag-wazarkar",
   resumeUrl: "/resume.pdf"
