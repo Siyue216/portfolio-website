@@ -59,9 +59,13 @@ export default function Navigation() {
           {/* Logo */}
           <a
             href="#home"
-            className="text-2xl font-bold gradient-text hover:scale-105 transition-transform"
+            className="hover:scale-105 transition-transform flex items-center"
           >
-            AW
+            <img 
+              src={ "/images/logo-light.jpg"}
+              alt="Portfolio Logo" 
+              className="h-12 w-auto rounded-lg"
+            />
           </a>
 
           {/* Desktop Navigation */}

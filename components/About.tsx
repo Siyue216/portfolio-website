@@ -12,7 +12,7 @@ export default function About() {
     <section id="about" className="section-padding bg-[var(--background)]">
       <div className="container">
         {/* Section Header */}
-        <div className="flex flex-col items-center text-center mb-16">
+        <div className="flex flex-col items-center text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             About <span className="gradient-text">Me</span>
           </h2>
@@ -23,7 +23,7 @@ export default function About() {
         <div className="mx-auto">
           <div className="grid md:grid-cols-5 items-center">
             {/* Profile Image - Takes 2 columns, positioned on the right */}
-            <div className="md:col-span-2 flex justify-center md:order-last">
+            <div className="md:col-span-2 flex justify-center  mb-12">
               <div className="relative">
                 <div className="w-64 h-64 md:w-72 lg:w-80 md:h-72 lg:h-80 rounded-2xl bg-gradient-to-br from-[var(--accent)] to-[var(--accent-hover)] p-1">
                   <div className="w-full h-full rounded-2xl bg-[var(--card-bg)] overflow-hidden">
@@ -40,9 +40,9 @@ export default function About() {
             </div>
 
             {/* Bio Content - Takes 3 columns */}
-            <div className="md:col-span-3 space-y-6">
+            <div className="md:col-span-3 space-y-6 mb-12">
               {bioParagraphs.map((paragraph, index) => (
-                <p key={index} className="text-lg text-[var(--foreground)] leading-relaxed">
+                <p key={index} className="text-lg text-justify text-[var(--foreground)] leading-relaxed">
                   {paragraph}
                 </p>
               ))}
@@ -66,7 +66,7 @@ export default function About() {
               <h3 className="text-2xl font-bold mt-4 mb-4 text-center">
                 Quick <span className="gradient-text">Highlights</span>
               </h3>
-              <div className="grid md:grid-cols-2 gap-4">
+              <div className="grid md:grid-cols-2 gap-4 mb-4">
                 {[
                   "5+ years of web development experience",
                   "Specialized in modern JavaScript frameworks",
