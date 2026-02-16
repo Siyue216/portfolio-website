@@ -11,7 +11,7 @@ When I'm not coding, I'm exploring new technologies, contributing to open-source
   email: "anuragwazarkar123@gmaill.com",
   github: "https://github.com/Siyue216",
   linkedin: "https://www.linkedin.com/in/anurag-wazarkar",
-  resumeUrl: "/resume.pdf"
+  resumeUrl: "/images/resume.pdf"
 };
 
 export const projects = [
