@@ -1,13 +1,17 @@
 'use client';
 
 import React, { useState } from 'react';
-import { projects } from '@/lib/data';
+import { useRouter } from 'next/navigation';
+import { projects, personalInfo } from '@/lib/data';
 import Card from './ui/Card';
 import Modal from './ui/Modal';
 import Button from './ui/Button';
 
-export default function Projects() {
+export default function Projects({ showMoreButton = true }: { showMoreButton?: boolean }) {
   const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
+  const router = useRouter();
+
+  const displayedProjects = showMoreButton ? projects.slice(0, 3) : projects;
 
   return (
     <section id="projects" className="section-padding bg-[var(--card-bg)]">
@@ -25,11 +29,19 @@ export default function Projects() {
 
         {/* Projects Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {projects.map((project) => (
+          {displayedProjects.map((project) => (
             <Card key={project.id} hover className="flex flex-col h-full">
               {/* Project Thumbnail */}
-              <div className="w-full h-48 bg-gradient-to-br from-[var(--accent)]/20 to-[var(--accent-hover)]/20 rounded-lg flex items-center justify-center mb-6 overflow-hidden border border-[var(--border)]">
-                <span className="text-6xl">🚀</span>
+              <div className="w-full h-48 bg-gradient-to-br from-[var(--accent)]/20 to-[var(--accent-hover)]/20 rounded-lg flex items-center justify-center mb-6 overflow-hidden border border-[var(--border)] relative group">
+                {project.thumbnail ? (
+                  <img
+                    src={project.thumbnail}
+                    alt={project.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                ) : (
+                  <span className="text-6xl group-hover:scale-110 transition-transform duration-300">🚀</span>
+                )}
               </div>
 
               {/* Content */}
@@ -64,6 +76,20 @@ export default function Projects() {
             </Card>
           ))}
         </div>
+
+        {/* More Projects Button */}
+        {showMoreButton && (
+          <div className="mt-12 flex justify-center">
+            <Button
+              onClick={() => router.push('/projects')}
+              variant="outline"
+              className="group flex items-center gap-2"
+            >
+              View More Projects
+              <span className="group-hover:translate-x-1 transition-transform inline-block">→</span>
+            </Button>
+          </div>
+        )}
       </div>
 
       {/* Project Modal */}

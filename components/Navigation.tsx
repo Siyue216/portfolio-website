@@ -1,8 +1,10 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 
 export default function Navigation() {
+  const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -38,12 +40,12 @@ export default function Navigation() {
   };
 
   const navLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Services', href: '#services' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Contact', href: '#contact' }
+    { name: 'Home', href: pathname === '/' ? '#home' : '/#home' },
+    { name: 'About', href: pathname === '/' ? '#about' : '/#about' },
+    { name: 'Projects', href: pathname === '/' ? '#projects' : '/projects' },
+    { name: 'Services', href: pathname === '/' ? '#services' : '/#services' },
+    { name: 'Skills', href: pathname === '/' ? '#skills' : '/#skills' },
+    { name: 'Contact', href: pathname === '/' ? '#contact' : '/#contact' }
   ];
 
   return (
@@ -58,7 +60,7 @@ export default function Navigation() {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <a
-            href="#home"
+            href={pathname === '/' ? '#home' : '/'}
             className="hover:scale-105 transition-transform flex items-center"
           >
             <img 

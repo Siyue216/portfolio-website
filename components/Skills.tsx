@@ -11,7 +11,8 @@ export default function Skills() {
     { name: 'Backend', items: skills.backend, icon: '⚙️' },
     { name: 'Database', items: skills.database, icon: '🗄️' },
     { name: 'AI', items: skills.AI, icon: '🧠' },
-    { name: 'Tools', items: skills.tools, icon: '🛠️' }
+    { name: 'Data Analysis', items: skills.dataAnalysis, icon: '📊' },
+    
   ];
 
   return (
